@@ -1,0 +1,2 @@
+/* 2018-7-29 18:41:46 | 版权所有 火星科技 http://marsgis.cn  【联系我们QQ：516584683，微信：marsgis】 */
+var thisWidget;function initWidgetView(t){showLatlng((thisWidget=t).getMapCenter())}function showLatlng(t){$("#point_jd").val(t.x.toFixed(6)),$("#point_wd").val(t.y.toFixed(6))}function submitXY(){var t=Number($.trim($("#point_jd").val())),i=Number($.trim($("#point_wd").val()));thisWidget.centerAt({lng:t,lat:i},!0)}

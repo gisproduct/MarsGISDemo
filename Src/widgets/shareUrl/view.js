@@ -1,0 +1,2 @@
+/* 2018-7-29 18:43:01 | 版权所有 火星科技 http://marsgis.cn  【联系我们QQ：516584683，微信：marsgis】 */
+var thisWidget;function initWidgetView(t){var i=(thisWidget=t).getUrl();$("#txtUrl").val(i),$("#txtUrl").focus(),$("#txtUrl").select()}

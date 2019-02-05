@@ -1,0 +1,928 @@
+﻿{
+    "map": {
+        "zoom": 11,
+        "center": { "x": 104.063709, "y": 30.659646 },
+        "minZoom": 3,
+        "maxZoom": 18,
+        "centerAutoLevel": 11,
+        "controls": [
+            { "type": "scale" },
+            { "type": "location", "format": "<div>经度:{x}</div><div>纬度:{y}</div>" },
+            { "type": "tool", "item": [ "home", "location", "fullscreen" ], "position": "bottomright" },
+            { "type": "zoom", "position": "bottomright" },
+            { "type": "layers", "position": "bottomleft", "visible": false }
+        ],
+        "basemaps": [
+            {
+                "id": 10,
+                "name": "地图底图",
+                "type": "group"
+            },
+            {
+                "pid": 10,
+                "name": "天地图电子",
+                "type": "www_tdt",
+                "layer": "vec",
+                "icon": "tianditumap.png",
+                "visible": true
+            },
+            {
+                "pid": 10,
+                "name": "天地图卫星",
+                "type": "www_tdt",
+                "layer": "img",
+                "icon": "tiandituimage.png"
+            },
+            {
+                "pid": 10,
+                "name": "天地图地形",
+                "icon": "tianditudem.png",
+                "type": "www_tdt",
+                "layer": "ter",
+                "maxNativeZoom": 14,
+                "errorTileUrl": "img/tile/notile.png"
+            },
+            {
+                "pid": 10,
+                "name": "海图",
+                "icon": "advsea.png",
+                "type": "wmts",
+                "url": "http://www.ais.msa.gov.cn/MapService",
+                "layer": "default",
+                "style": "default",
+                "format": "image/png",
+                "tilematrixSet": "advsea"
+            },
+            {
+                "pid": 10,
+                "name": "OSM地图",
+                "type": "www_osm",
+                "icon": "osm.png"
+            },
+            {
+                "pid": 10,
+                "name": "谷歌卫星",
+                "type": "tile",
+                "url": "http://www.google.cn/maps/vt?lyrs=s&x={x}&y={y}&z={z}",
+                "icon": "googleimage.png"
+            },
+          {
+            "pid": 10,
+            "name": "ArcGIS卫星",
+            "type": "arcgis_tile",
+            "url": "http://192.168.0.95:6080/arcgis/rest/services/CDZLS_RASTER/MapServer",
+            "token": "rcq1vXphSqVvBqGmYgU2_LrAlptHl54X1RMwfUxEeFNcj9UBBocxeBsjSEtpv47-",
+            "icon": "bingimage.png"
+          },
+            {
+                "pid": 10,
+                "name": "离线地图",
+                "type": "tile",
+                "url": "http://data.marsgis.cn/wgs3857img/{z}/{x}/{y}.jpg",
+                "maxNativeZoom": 18,
+                "icon": "baiduimage.png"
+            }
+        ],
+        "operationallayers": [
+            { "id": 20, "name": "辅助图层", "type": "group" },
+            { "pid": 20, "name": "经纬网", "type": "custom_jww" },
+            { "pid": 20, "name": "实时路况", "type": "www_gaode", "layer": "time" },
+
+
+            {
+                "id": 40,
+                "name": "栅格数据",
+                "type": "group"
+            },
+            {
+                "id": 4020,
+                "pid": 40,
+                "name": "OGC WMS数据",
+                "type": "group"
+            },
+            {
+                "pid": 4020,
+                "name": "行政边界线",
+                "type": "wms",
+                "url": "http://gisserver.tianditu.com/TDTService/region/wms",
+                "layers": "030100",
+                "transparent": true,
+                "format": "image/png"
+            },
+            {
+                "pid": 4020,
+                "name": "教育设施点",
+                "type": "wms",
+                "url": "http://api.marsgis.cn/geoserver/mars/wms",
+                "layers": "mars:hfjy",
+                "crs": "EPSG:4326",
+                "transparent": true,
+                "format": "image/png"
+            },
+
+            {
+                "pid": 4020,
+                "name": "道路线",
+                "type": "wms",
+                "url": "http://api.marsgis.cn/geoserver/mars/wms",
+                "layers": "mars:hfdl",
+                "crs": "EPSG:4326",
+                "transparent": true,
+                "format": "image/png"
+            },
+            {
+                "pid": 4020,
+                "name": "建筑物面",
+                "type": "wms",
+                "url": "http://api.marsgis.cn/geoserver/mars/wms",
+                "layers": "mars:hfjzw",
+                "crs": "EPSG:4326",
+                "transparent": true,
+                "format": "image/png"
+            },
+            {
+                "pid": 4020,
+                "name": "规划面",
+                "type": "wms",
+                "url": "http://api.marsgis.cn/geoserver/mars/wms",
+                "layers": "mars:hfgh",
+                "crs": "EPSG:4326",
+                "transparent": true,
+                "format": "image/png"
+            },
+
+            {
+                "id": 4010,
+                "pid": 40,
+                "name": "ArcGIS Dynamic",
+                "type": "group"
+            },
+
+            {
+                "pid": 4010,
+                "name": "规划图",
+                "type": "arcgis_dynamic",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/guihua/MapServer",
+                "opacity": 0.7,
+                "popup": "all"
+            },
+            {
+                "pid": 4010,
+                "name": "建筑物",
+                "type": "arcgis_dynamic",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer",
+                "layers": [ 37 ],
+                "popup": "all"
+            },
+            {
+                "pid": 4010,
+                "name": "道路",
+                "type": "arcgis_dynamic",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer",
+                "layers": [ 24 ],
+                "popup": "{NAME}"
+            },
+
+            {
+                "id": 30,
+                "name": "矢量数据",
+                "type": "group"
+            },
+            {
+                "id": 3030,
+                "pid": 30,
+                "name": "GeoJSON数据",
+                "type": "group"
+            },
+            {
+                "pid": 3030,
+                "name": "各省市",
+                "type": "geojson",
+                "url": "data/china.json",
+                "symbol": {
+                    "styleOptions": {
+                        "color": "#0000ff",
+                        "opacity": 1,
+                        "dashArray": "5 10",
+                        "weight": 2,
+                        "fillColor": "#000",
+                        "fillOpacity": 0.2
+                    }
+                },
+                "popup": "all"
+            },
+
+            {
+                "id": 3010,
+                "pid": 30,
+                "name": "ArcGIS Feature",
+                "type": "group"
+            },
+
+
+            {
+                "pid": 3010,
+                "name": "加油站",
+                "type": "arcgis_feature",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer/10",
+                "popup": "<p>名称:{NAME}<br>地址:{address}</p>",
+                "symbol": {
+                    "draggable": false,
+                    "iconOptions": {
+                        "iconUrl": "img/marker/men1.png",
+                        "iconSize": [ 32, 44 ],
+                        "iconAnchor": [ 16, 44 ],
+                        "popupAnchor": [ 0, -44 ]
+                    }
+                },
+                "visible": false
+            },
+            {
+                "pid": 3010,
+                "name": "服务区",
+                "type": "arcgis_feature",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer/16",
+                "columns": [
+                    { "field": "NAME", "name": "名称" },
+                    { "field": "address", "name": "地址" }
+                ],
+                "symbol": {
+                    "iconOptions": {
+                        "iconUrl": "img/marker/men1.png",
+                        "iconSize": [ 32, 44 ],
+                        "iconAnchor": [ 16, 44 ],
+                        "popupAnchor": [ 0, -44 ]
+                    },
+                    "iconField": "NAME",
+                    "iconFieldOptions": {
+                        "新桥服务区": {
+                            "iconUrl": "img/marker/men2.png",
+                            "shadowUrl": "img/marker/emergency.gif",
+                            "shadowSize": [ 100, 100 ],
+                            "shadowAnchor": [ 50, 50 ]
+                        },
+                        "丰乐服务区": { "iconUrl": "img/marker/men3.png" },
+                        "众兴服务区": { "iconUrl": "img/marker/men4.png" }
+                    }
+                },
+                "visible": false
+            },
+            {
+                "pid": 3010,
+                "name": "收费站",
+                "type": "arcgis_feature",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer/15",
+                "popup": {
+                    "type": "iframe",
+                    "url": "http://www.marsgis.cn/?id={FID}&name={NAME}",
+                    "width": 600,
+                    "height": 400
+                },
+                "symbol": {
+                    "iconOptions": {
+                        "iconFont": "fa fa-university",
+                        "color": "#FF0000",
+                        "iconSize": [ 30, 30 ],
+                        "iconAnchor": [ 15, 15 ],
+                        "popupAnchor": [ 0, -15 ]
+                    },
+                    "iconField": "NAME",
+                    "iconFieldOptions": {
+                        "岗集收费站": { "iconFont": "fa fa-cab", "color": "#FC4E2A" },
+                        "高刘收费站": { "color": "#E31A1C" },
+                        "蜀山收费站": { "color": "#BD0026" },
+                        "金寨路收费站": { "color": "#800026" }
+                    }
+                },
+                "visible": false
+            },
+
+
+            {
+                "pid": 3010,
+                "name": "铁路",
+                "type": "arcgis_feature",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer/33",
+                "popup": "名称:{NAME}<br>地址:{address}",
+                "symbol": {
+                    "styleOptions": {
+                        "color": "#000000",
+                        "dashArray": "10 20",
+                        "weight": 6
+                    }
+                },
+                "visible": false
+            },
+
+            {
+                "pid": 3010,
+                "name": "乡镇",
+                "type": "arcgis_feature",
+                "url": "http://arc.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer/39",
+                "simplifyFactor": 0.35,
+                "precision": 5,
+                "popup": "all",
+                "symbol": {
+                    "styleOptions": {
+                        "color": "white",
+                        "opacity": 1,
+                        "weight": 2,
+                        "fillColor": "#FED976",
+                        "fillOpacity": 0.7
+                    },
+                    "styleField": "NAME",
+                    "styleFieldOptions": {
+                        "董岗乡": { "fillColor": "#FD8D3C" },
+                        "店埠镇": { "fillColor": "#FC4E2A" },
+                        "长淮街道": { "fillColor": "#E31A1C" },
+                        "南七街道": { "fillColor": "#BD0026" }
+                    }
+                },
+                "visible": false
+            },
+            {
+                "id": 3020,
+                "pid": 30,
+                "name": "OGC WFS数据",
+                "type": "group"
+            },
+            {
+                "pid": 3020,
+                "name": "建筑物",
+                "type": "wfs",
+                "url": "http://api.marsgis.cn/geoserver/mars/ows",
+                "typeNS": "mars",
+                "typeName": "hfjzw",
+                "minZoom": 15,
+                "geometryField": "the_geom",
+                "symbol": {
+                    "styleOptions": {
+                        "color": "#3388ff",
+                        "opacity": 1,
+                        "weight": 1,
+                        "fillColor": "#3388ff",
+                        "fillOpacity": 0.2
+                    }
+                },
+                "popup": "all"
+            },
+            {
+                "pid": 3020,
+                "name": "合肥区县界线",
+                "type": "wfs",
+                "url": "http://api.marsgis.cn/geoserver/mars/ows",
+                "typeNS": "mars",
+                "typeName": "hfbj",
+                "geometryField": "the_geom",
+                "symbol": {
+                    "styleOptions": {
+                        "color": "#ff0000",
+                        "opacity": 1,
+                        "weight": 3,
+                        "dashArray": "5, 10"
+                    }
+                },
+                "popup": "{NAME}"
+            },
+            {
+                "pid": 3020,
+                "name": "体育设施点",
+                "type": "wfs",
+                "url": "http://api.marsgis.cn/geoserver/mars/ows",
+                "typeNS": "mars",
+                "typeName": "hfty",
+                "geometryField": "the_geom",
+                "symbol": {
+                    "iconOptions": {
+                        "iconUrl": "img/marker/men1.png",
+                        "iconSize": [ 32, 44 ],
+                        "iconAnchor": [ 16, 44 ],
+                        "popupAnchor": [ 0, -44 ]
+                    }
+                },
+                "popup": [
+                    { "field": "项目名称", "name": "项目名称" },
+                    { "field": "建设性质", "name": "建设性质" },
+                    { "field": "设施级别", "name": "设施级别" },
+                    { "field": "所属区县", "name": "所属区县" },
+                    { "field": "建筑内容及", "name": "建筑内容" },
+                    { "field": "新增用地（", "name": "新增用地" },
+                    { "field": "开工", "name": "开工" },
+                    { "field": "总投资（万", "name": "总投资" },
+                    { "field": "资金来源", "name": "资金来源" },
+                    { "field": "初步选址", "name": "初步选址" },
+                    { "field": "设施类型", "name": "设施类型" },
+                    { "field": "设施等级", "name": "设施等级" },
+                    { "field": "所在区县", "name": "所在区县" },
+                    { "field": "具体位置", "name": "具体位置" },
+                    { "field": "建设内容（", "name": "建设内容" },
+                    { "field": "用地面积（", "name": "用地面积", "unit": "亩" },
+                    { "field": "设施规模（", "name": "设施规模" },
+                    { "field": "举办者类型", "name": "举办者类型" },
+                    { "field": "开工时间", "name": "开工时间" },
+                    { "field": "总投资额（", "name": "总投资额", "unit": "亿元" },
+                    { "field": "项目推进主", "name": "项目推进主体" },
+                    { "field": "项目进度", "name": "项目进度" },
+                    { "field": "项目来源", "name": "项目来源" },
+                    { "field": "备注", "name": "备注" }
+                ]
+            }
+
+        ]
+
+    },
+
+    "widget": {
+        "debugger": false,
+        "version": "time",
+        "defaultOptions": {
+            "windowOptions": {
+                "skin": "animation-fade",
+                "position": {
+                    "top": 50,
+                    "right": 10
+                },
+                "maxmin": false,
+                "resize": true
+            },
+            "autoDisable": true,
+            "disableOhter": true
+        },
+        "widgetsAtStart": [
+            {
+                "name": "右上角工具栏",
+                "uri": "widgets/toolBar/widget.js",
+                "data": [
+                    { "name": "漫游", "icon": "fa fa-globe", "onclick": "L.widget.disableAll()", "visible": true },
+                    { "name": "地图", "icon": "fa fa-map", "widget": "widgets/manageBasemaps/widget.js", "visible": false },
+                    { "name": "图层", "icon": "fa fa-tasks", "widget": "widgets/manageLayers/widget.js" },
+                    {
+                        "name": "工具",
+                        "icon": "fa fa-cubes",
+                        "children": [
+                            { "name": "测量", "icon": "fa fa-calculator", "widget": "widgets/measure/widget.js" },
+                            { "name": "标记", "icon": "fa fa-edit", "widget": "widgets/addmarker/widget.js" },
+                            { "name": "坐标定位", "icon": "fa fa-map-pin", "widget": "widgets/centerXY/widget.js" },
+                            { "name": "视角书签", "icon": "fa fa-tags", "widget": "widgets/bookmark/widget.js" },
+                            { "name": "地区导航", "icon": "fa fa-paper-plane", "widget": "widgets/navXZQH/widget.js" },
+
+                            { "name": "分屏对比", "icon": "fa fa-window-restore", "widget": "widgets/mapCompare/widget.js" },
+                            { "name": "卷帘对比", "icon": "fa fa-columns", "widget": "widgets/mapSwipe/widget.js" },
+
+                            { "name": "标绘", "icon": "fa fa-object-group", "widget": "widgets/plot/widget.js" },
+                            { "name": "打印", "icon": "fa fa-print", "widget": "widgets/print/widget.js" },
+                            { "name": "出图", "icon": "fa fa-file-image-o", "widget": "widgets/expImg/widget.js" },
+                            { "name": "街景", "icon": "fa fa-street-view", "widget": "widgets/streetscape/widget.js" },
+                            { "name": "分享", "icon": "fa fa-share", "widget": "widgets/shareUrl/widget.js" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "百度POI查询",
+                "uri": "widgets/queryBaiduPOI/widget.js"
+            },
+            {
+                "name": "路线规划",
+                "uri": "widgets/queryGaodeRoute/widget.js"
+            }
+        ],
+        "widgets": [
+
+            {
+                "name": "模板",
+                "type": "group",
+                "children": [
+                    {
+                        "name": "iframe弹窗模板",
+                        "uri": "widgets/_example/widget.js",
+                        "windowOptions": {
+                            "width": 300,
+                            "height": 400,
+                            "position": {
+                                "bottom": 50,
+                                "right": 10
+                            },
+                            "maxmin": true,
+                            "resize": true
+                        },
+                        "openAtStart": false
+                    },
+                    {
+                        "name": "div弹窗模板",
+                        "uri": "widgets/_example_divwin/widget.js"
+                    },
+                    {
+                        "name": "append模板",
+                        "uri": "widgets/_example_append/widget.js"
+                    }
+                ]
+            },
+            {
+                "name": "地图工具",
+                "type": "group",
+                "children": [
+                    {
+                        "id": "manageBasemaps",
+                        "name": "地图切换",
+                        "uri": "widgets/manageBasemaps/widget.js",
+                        "windowOptions": {
+                            "position": {
+                                "left": 50,
+                                "bottom": 25
+                            }
+                        },
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "图层控制",
+                        "basemaps": true,
+                        "uri": "widgets/manageLayers/widget.js",
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "坐标定位",
+                        "uri": "widgets/centerXY/widget.js"
+                    },
+                    {
+                        "name": "地区导航",
+                        "uri": "widgets/navXZQH/widget.js"
+                    },
+                    {
+                        "name": "测量",
+                        "uri": "widgets/measure/widget.js"
+                    },
+                    {
+                        "name": "标记",
+                        "uri": "widgets/addmarker/widget.js"
+                    },
+                    {
+                        "name": "视角书签",
+                        "uri": "widgets/bookmark/widget.js"
+                    },
+                    {
+                        "name": "分屏对比",
+                        "uri": "widgets/mapCompare/widget.js",
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "卷帘对比",
+                        "uri": "widgets/mapSwipe/widget.js",
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "标绘",
+                        "uri": "widgets/plot/widget.js",
+                        "windowOptions": {
+                            "position": {
+                                "top": 50,
+                                "right": 10,
+                                "bottom": 10
+                            }
+                        }
+                    },
+                    {
+                        "name": "分享当前地图位置",
+                        "uri": "widgets/shareUrl/widget.js",
+                        "windowOptions": {
+                            "position": "t"
+                        }
+                    },
+                    {
+                        "name": "打印",
+                        "uri": "widgets/print/widget.js",
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "导出地图",
+                        "uri": "widgets/expImg/widget.js",
+                        "autoDisable": false,
+                        "disableOhter": false
+                    },
+                    {
+                        "name": "街景",
+                        "uri": "widgets/streetscape/widget.js"
+                    }
+                ]
+            },
+            {
+                "name": "Echarts态势",
+                "type": "group",
+                "children": [
+                    {
+                        "name": "饼形图标记",
+                        "uri": "widgetsTS/showEcharts/marker1.js"
+                    },
+                    {
+                        "name": "折线图标记",
+                        "uri": "widgetsTS/showEcharts/marker2.js"
+                    },
+
+                    {
+                        "name": "全省经济指标",
+                        "uri": "widgetsTS/showEcharts/sandian1.js"
+                    },
+                    {
+                        "name": "城市空气质量",
+                        "uri": "widgetsTS/showEcharts/sandian2.js"
+                    },
+                    {
+                        "name": "散点图态势",
+                        "uri": "widgetsTS/showEcharts/sandian3.js"
+                    },
+                    {
+                        "name": "散点图微博签到",
+                        "uri": "widgetsTS/showEcharts/sandianWeibo.js"
+                    },
+
+                    {
+                        "name": "流出线",
+                        "uri": "widgetsTS/showEcharts/line_chu.js"
+                    },
+                    {
+                        "name": "流入线",
+                        "uri": "widgetsTS/showEcharts/line_ru.js"
+                    },
+                    {
+                        "name": "物流运输图",
+                        "uri": "widgetsTS/showEcharts/line1.js"
+                    },
+                    {
+                        "name": "人口迁徙图",
+                        "uri": "widgetsTS/showEcharts/line2.js"
+                    },
+                    {
+                        "name": "流向动态效果",
+                        "uri": "widgetsTS/showEcharts/line3.js"
+                    },
+                    {
+                        "name": "道路拥堵图",
+                        "uri": "widgetsTS/showEcharts/lineroad.js"
+                    },
+                    {
+                        "name": "公交路线热力图",
+                        "uri": "widgetsTS/showEcharts/lineroad2.js"
+                    },
+                    {
+                        "name": "铁路热力图Arc",
+                        "uri": "widgetsTS/showEcharts/lineroad3.js"
+                    }
+                ]
+            },
+            {
+                "name": "MapV态势",
+                "type": "group",
+                "children": [
+                    {
+                        "name": "蜂巢图",
+                        "uri": "widgetsTS/showMapV/gridHoneycomb.js"
+                    },
+                    {
+                        "name": "方格图",
+                        "uri": "widgetsTS/showMapV/gridPoint.js"
+                    },
+                    {
+                        "name": "微博",
+                        "uri": "widgetsTS/showMapV/pointWeibo.js"
+                    },
+                    {
+                        "name": "动态点",
+                        "uri": "widgetsTS/showMapV/pointTime.js"
+                    },
+                    {
+                        "name": "简单线",
+                        "uri": "widgetsTS/showMapV/polyline.js"
+                    },
+                    {
+                        "name": "强度线",
+                        "uri": "widgetsTS/showMapV/polylineIntensity.js"
+                    },
+                    {
+                        "name": "动态轨迹",
+                        "uri": "widgetsTS/showMapV/lineTime.js"
+                    },
+                    {
+                        "name": "强边界图",
+                        "uri": "widgetsTS/showMapV/lineForceEdgeBunding.js"
+                    },
+                    {
+                        "name": "迁徙图",
+                        "uri": "widgetsTS/showMapV/qianxi.js"
+                    },
+                    {
+                        "name": "大迁徙图",
+                        "uri": "widgetsTS/showMapV/qianxiTime.js"
+                    },
+                    {
+                        "name": "北京小区",
+                        "uri": "widgetsTS/showMapV/polygon.js"
+                    }
+                ]
+            },
+            {
+                "name": "ts态势",
+                "type": "group",
+                "children": [
+                    {
+                        "name": "全省情况",
+                        "uri": "widgetsTS/ts_showQyInfoSheng/widget.js"
+                    },
+                    {
+                        "name": "市州情况",
+                        "uri": "widgetsTS/ts_showQyInfo/widget.js?type=2",
+                        "data": "shi.json"
+                    },
+                    {
+                        "name": "区县情况",
+                        "uri": "widgetsTS/ts_showQyInfo/widget.js?type=3",
+                        "data": "xian.json"
+                    },
+                    {
+                        "name": "单项指标",
+                        "uri": "widgetsTS/ts_showPolyChartsOne/widget.js"
+                    },
+                    {
+                        "name": "多项指标",
+                        "uri": "widgetsTS/ts_showPolyCharts/widget.js"
+                    },
+                    {
+                        "name": "多项指标-无地图",
+                        "uri": "widgetsTS/ts_showPolyChartsNoMap/widget.js"
+                    },
+                    {
+                        "name": "相邻市州对比",
+                        "uri": "widgetsTS/ts_showQyInfoDB/widget.js?type=1",
+                        "data": "shi.json"
+                    },
+                    {
+                        "name": "相邻区县对比",
+                        "uri": "widgetsTS/ts_showQyInfoDB/widget.js?type=2",
+                        "data": "xian.json"
+                    },
+                    {
+                        "name": "比对汇总",
+                        "uri": "widgetsTS/ts_showDBHZ/widget.js",
+                        "windowOptions": {
+                            "position": {
+                                "left": 1,
+                                "right": 1,
+                                "top": 1,
+                                "bottom": 1
+                            }
+                        }
+                    },
+
+                    {
+                        "name": "大型洪水情况",
+                        "uri": "widgetsTS/ts_showView/widget5.js"
+                    },
+                    {
+                        "name": "主要城市水域",
+                        "uri": "widgetsTS/ts_showView/widget6.js"
+                    },
+
+                    {
+                        "name": "事故模拟",
+                        "uri": "widgetsTS/fx_sgmn/widget.js"
+                    }
+
+                ]
+            },
+            {
+                "name": "常用功能",
+                "type": "group",
+                "children": [
+                    {
+                        "name": "要素编辑",
+                        "uri": "widgetsTS/editFeature/widget.js",
+                        "layers": [
+                            {
+                                "name": "测试点",
+                                "url": "https://services.arcgis.com/rOo16HdIMeOBI4Mb/ArcGIS/rest/services/PDX/FeatureServer/0",
+                                "geometrytype": "point",
+                                "symbol": {
+                                    "iconOptions": {
+                                        "iconUrl": "img/marker/men1.png",
+                                        "iconSize": [ 32, 44 ],
+                                        "iconAnchor": [ 16, 44 ],
+                                        "popupAnchor": [ 0, -44 ]
+                                    }
+                                },
+                                "columns": [
+                                    { "field": "Address", "name": "名称" },
+                                    { "field": "Description", "name": "描述", "type": "datetime" },
+                                    { "field": "EXCEL_POINT_X", "name": "经度", "type": "number" },
+                                    { "field": "EXCEL_POINT_Y", "name": "纬度", "type": "number" }
+                                ],
+                                "columnsShow": {
+                                    "table": [ "Address", "Description" ]
+                                }
+                            },
+                            {
+                                "name": "测试面",
+                                "url": "https://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/PDX_Pedestrian_Districts/FeatureServer/0",
+                                "geometrytype": "polygon",
+                                "symbol": {
+                                    "styleOptions": {
+                                        "color": "#ff0000",
+                                        "weight": 3
+                                    }
+                                },
+                                "columns": [
+                                    { "field": "TRANPLANID", "name": "名称" },
+                                    { "field": "PEDDISTRIC", "name": "描述", "editable": false },
+                                    { "field": "SHAPE_AREA", "name": "面积", "type": "number" },
+                                    { "field": "SHAPE_LEN", "name": "周长", "type": "number" }
+                                ],
+                                "columnsShow": {
+                                    "table": [ "TRANPLANID", "PEDDISTRIC" ]
+                                }
+                            },
+                            {
+                                "name": "项目红线",
+                                "url": "http://39.107.125.232:6080/arcgis/rest/services/WHGH/test/FeatureServer/0",
+                                "geometrytype": "polygon",
+                                "symbol": {
+                                    "styleOptions": {
+                                        "color": "#ff0000",
+                                        "weight": 3
+                                    }
+                                },
+                                "columns": [
+                                    { "field": "项目名称", "name": "项目名称" },
+                                    {
+                                        "field": "Type",
+                                        "name": "类型",
+                                        "type": "select",
+                                        "option": [
+                                            { "name": "类型1", "value": "类型1" },
+                                            { "name": "类型2", "value": "类型2" },
+                                            { "name": "类型3", "value": "类型3" },
+                                            { "name": "类型4", "value": "类型4" },
+                                            { "name": "类型5", "value": "类型5" }
+                                        ]
+                                    },
+                                    { "field": "可使用面积", "name": "可使用面积" },
+                                    { "field": "道路代征", "name": "道路代征" },
+                                    { "field": "制图人", "name": "制图人" }
+                                ],
+                                "columnsShow": {
+                                    "table": [ "项目名称", "面积" ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "条件查询",
+                        "uri": "widgetsTS/queryByWhere/widget.js"
+                    },
+                    {
+                        "name": "企业查询",
+                        "uri": "widgetsTS/queryQy/widget.js",
+                        "windowOptions": {
+                            "position": {
+                                "top": 5,
+                                "right": 5,
+                                "bottom": 5
+                            }
+                        }
+                    },
+                    {
+                        "name": "ArcPOI查询",
+                        "uri": "widgetsTS/geosearch/widget.js"
+                    },
+
+                    {
+                        "name": "POI周边查询",
+                        "uri": "widgetsTS/queryBaiduPOICircle/widget.js",
+                        "windowOptions": {
+                            "position": {
+                                "top": 5,
+                                "right": 5,
+                                "bottom": 5
+                            }
+                        }
+                    },
+
+                    {
+                        "name": "热力图",
+                        "uri": "widgetsTS/showHeat/widget.js"
+                    }
+
+                ]
+            }
+
+
+
+        ]
+    }
+
+
+
+
+}
